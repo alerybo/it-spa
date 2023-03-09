@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1c2925;
+  color: #fff;
+  font-family: "Forum", cursive;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+
+  .menu-container {
+    display: none;
+  }
+
+  button {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: 1rem;
+    outline: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    margin: 0 1rem;
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+main {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 2rem 0;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  // HOME SECTION
+
+  .home {
+    width: 100%;
+
+    &-hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+
+      img {
+        width: 80%;
+        border-radius: 50%;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        margin: 3rem 0;
+      }
+    }
+
+    &-about {
+      background-color: #131d1a;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+
+      div {
+        padding: 3rem;
+      }
+
+      p {
+        margin: 3rem 0;
+      }
+    }
+
+    &-treatments {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3rem;
+      div {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      img {
+        width: 20%;
+      }
+    }
+
+    &-rooms {
+      background-color: #131d1a;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+
+      div {
+        padding: 3rem;
+      }
+      p {
+        margin: 3rem 0;
+      }
+    }
+  }
+}
