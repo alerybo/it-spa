@@ -16,11 +16,22 @@ body {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
+  padding: 1rem;
+  top: 0;
+  height: 80px;
+  background: #1c2925;
+  width: 100%;
 
   .menu-container {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    background: #1c2925;
+    top: -500px;
   }
 
   button {
@@ -29,10 +40,13 @@ nav {
     border-radius: 0;
     font-size: 1rem;
     outline: none;
-    padding: 0.5rem 1rem;
     color: #fff;
+    padding: 0.5rem;
     border-bottom: 1px solid transparent;
-    margin: 0 1rem;
+
+    .menu-button {
+      margin-left: auto;
+    }
 
     &:active,
     &:focus,
@@ -43,6 +57,7 @@ nav {
 }
 
 main {
+  margin-top: 80px;
   h1,
   h2,
   h3,
@@ -64,7 +79,23 @@ main {
     padding: 0.5rem 1rem;
   }
 
-  // HOME SECTION
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    background-color: #131d1a;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem 0;
+
+    h4 {
+      margin: 1rem 0;
+    }
+  }
+
+  // ==================== HOME PAGE ====================
 
   .home {
     width: 100%;
@@ -74,7 +105,6 @@ main {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       padding: 1rem;
 
       img {
@@ -132,6 +162,36 @@ main {
       p {
         margin: 3rem 0;
       }
+    }
+  }
+
+  // ==================== ROOMS PAGE ====================
+
+  .rooms {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    li {
+      padding: 0;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+      div {
+        padding: 2rem;
+      }
+    }
+  }
+
+  // ==================== ROOM DETAILS PAGE ====================
+
+  .room-details {
+    article {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

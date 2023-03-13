@@ -2,17 +2,12 @@ import { NavButton } from "../common/NavButton";
 import { RoomList } from "./RoomList";
 import { TreatmentList } from "./TreatmentList";
 import { DUMMY_TEXT_SHORT, DUMMY_TEXT_LONG } from "../constants/constants";
-import * as treatmentImg1 from "../assets/computer-mouse.svg";
-import * as treatmentImg2 from "../assets/computer-screen.svg";
-import * as treatmentImg3 from "../assets/coffee-pot.svg";
+import { treatmentIcon1, treatmentIcon2, treatmentIcon3 } from "../assets";
 
 const treatments = [
-  {
-    name: "Biczowanie kablem od myszy",
-    url: treatmentImg1,
-  },
-  { name: "Masaż rozgrzanym monitorem", url: treatmentImg2 },
-  { name: "Kąpiel w gorącej kawie", url: treatmentImg3 },
+  { name: "Biczowanie kablem od myszy", url: treatmentIcon2 },
+  { name: "Masaż rozgrzanym monitorem", url: treatmentIcon3 },
+  { name: "Kąpiel w gorącej kawie", url: treatmentIcon1 },
 ];
 
 export function Home() {
@@ -94,10 +89,11 @@ export function Home() {
     <h2>Luxury Suites</h2>
     <p>${DUMMY_TEXT_LONG}</p>
     `;
-  roomsContainer.append(NavButton("Read more", RoomList));
+  roomsContainer.append(NavButton("See all rooms", RoomList));
 
   roomsSection.append(roomsImage);
   roomsSection.append(roomsContainer);
+
   // ========================================
 
   div.append(hero);

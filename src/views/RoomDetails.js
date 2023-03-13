@@ -1,8 +1,12 @@
+import { Button } from "../common/Button";
+import { cartManager } from "../cart/cartManager";
+import * as roomImages from "../assets";
+
 export function RoomDetails(roomId) {
   const div = document.createElement("div");
+  div.classList.add("room-details")
 
   div.innerHTML = `
-    <h2>Room: ${roomId}</h2>
     <p class="loading">Ładuję pokój...</p>
   `;
 
@@ -13,14 +17,20 @@ export function RoomDetails(roomId) {
       const article = document.createElement("article");
 
       article.innerHTML = `
-        <h3>${room.name}</h3>
-        <p>Liczba łóżek: ${room.beds} x 🛌</p>
-        <p>Liczba gości: ${room.guests} x 🧑</p>
+        <h2>${room.name}</h3>
+        <img src=${roomImages[`room${room.id}`]}/>
+        <p>🛌 ${room.beds}</p>
+        <p>🧑 ${room.guests}</p>
         <p>${room.description}</p>
         <p>
-          <strong>${room.price.toFixed(2)} PLN</strong>
+          <strong>${room.price} PLN</strong>
         </p>
       `;
+
+      const addToCartButton = Button("Add to cart", () =>
+        cartManager.addItem(room)
+      );
+      article.append(addToCartButton);
 
       div.querySelector(".loading").remove();
       div.append(article);
