@@ -4,7 +4,7 @@ import * as roomImages from "../assets";
 
 export function RoomDetails(roomId) {
   const div = document.createElement("div");
-  div.classList.add("room-details")
+  div.classList.add("room-details");
 
   div.innerHTML = `
     <p class="loading">Ładuję pokój...</p>
@@ -17,20 +17,24 @@ export function RoomDetails(roomId) {
       const article = document.createElement("article");
 
       article.innerHTML = `
-        <h2>${room.name}</h3>
         <img src=${roomImages[`room${room.id}`]}/>
-        <p>🛌 ${room.beds}</p>
-        <p>🧑 ${room.guests}</p>
-        <p>${room.description}</p>
-        <p>
-          <strong>${room.price} PLN</strong>
-        </p>
+        <div id="room-details">
+          <h2>${room.name}</h3>
+          <span>🛏 ${room.beds}</span>
+          <span>☺ ${room.guests}</span>
+          <p>${room.description}</p>
+          <h1>
+            <strong>${room.price} PLN</strong>
+          </h1>
+        </div>
       `;
 
-      const addToCartButton = Button("Add to cart", () =>
-        cartManager.addItem(room)
+      const addToCartButton = Button(
+        "Add to cart",
+        () => cartManager.addItem(room),
+        ["dark-btn"]
       );
-      article.append(addToCartButton);
+      article.querySelector("#room-details").append(addToCartButton);
 
       div.querySelector(".loading").remove();
       div.append(article);

@@ -27,8 +27,10 @@ export function Home() {
     <p>${DUMMY_TEXT_SHORT}</p>
   `;
 
-  heroContainer.append(NavButton("Book a room", RoomList));
-  heroContainer.append(NavButton("Book a treatment", TreatmentList));
+  heroContainer.append(NavButton("Book a room", RoomList, ["dark-btn"]));
+  heroContainer.append(
+    NavButton("Book a treatment", TreatmentList, ["dark-btn"])
+  );
 
   hero.append(heroImage);
   hero.append(heroContainer);
@@ -46,7 +48,7 @@ export function Home() {
     <h2>Welcome to IT SPA</h2>
     <p>${DUMMY_TEXT_LONG}</p>
     `;
-  aboutContainer.append(NavButton("Read more", RoomList));
+  aboutContainer.append(NavButton("Read more", RoomList, ["light-btn"]));
   about.append(aboutImage);
   about.append(aboutContainer);
 
@@ -75,7 +77,9 @@ export function Home() {
   });
 
   treatmentsSection.append(treatmentsContainer);
-  treatmentsSection.append(NavButton("See all treatments", TreatmentList));
+  treatmentsSection.append(
+    NavButton("See all treatments", TreatmentList, ["dark-btn"])
+  );
 
   // ==================== ROOMS SECTION ====================
   const roomsSection = document.createElement("section");
@@ -89,7 +93,7 @@ export function Home() {
     <h2>Luxury Suites</h2>
     <p>${DUMMY_TEXT_LONG}</p>
     `;
-  roomsContainer.append(NavButton("See all rooms", RoomList));
+  roomsContainer.append(NavButton("See all rooms", RoomList, ["light-btn"]));
 
   roomsSection.append(roomsImage);
   roomsSection.append(roomsContainer);

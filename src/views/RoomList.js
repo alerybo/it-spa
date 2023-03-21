@@ -32,11 +32,15 @@ export function RoomList() {
           </div>
         `;
 
-        const addToCartButton = Button("Add to cart", () =>
-          cartManager.addItem(room)
+        const addToCartButton = Button(
+          "Add to cart",
+          () => cartManager.addItem(room),
+          ["light-btn"]
         );
-        const detailsButton = NavButton("Read more", () =>
-          RoomDetails(room.id)
+        const detailsButton = NavButton(
+          "Read more",
+          () => RoomDetails(room.id),
+          ["light-btn"]
         );
 
         li.lastElementChild.append(addToCartButton, detailsButton);
