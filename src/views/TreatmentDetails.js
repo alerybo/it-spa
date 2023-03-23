@@ -1,10 +1,17 @@
+import { Button } from "../common/Button";
+import { Loader } from "../common/Loader";
+import { cartManager } from "../cart/cartManager";
+
 export function TreatmentDetails(treatmentId) {
   const div = document.createElement("div");
+  div.classList.add("treatment-details");
 
   div.innerHTML = `
     <h2>Treatment: ${treatmentId}</h2>
-    <p class="loading">Loading...</p>
   `;
+
+  const loader = Loader();
+  div.append(loader);
 
   fetch(`http://localhost:3000/treatments/${treatmentId}`)
     .then((response) => response.json())
@@ -20,7 +27,14 @@ export function TreatmentDetails(treatmentId) {
         </p>
       `;
 
-      div.querySelector(".loading").remove();
+      const addToCartButton = Button(
+        "Add to cart",
+        () => cartManager.addItem(treatment),
+        ["dark-btn"]
+      );
+      article.append(addToCartButton);
+
+      div.querySelector(".loader").remove();
       div.append(article);
     });
 

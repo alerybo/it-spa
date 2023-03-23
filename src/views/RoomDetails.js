@@ -17,7 +17,9 @@ export function RoomDetails(roomId) {
       const article = document.createElement("article");
 
       article.innerHTML = `
-        <img src=${roomImages[`room${room.id}`]}/>
+        <div>
+          <img src=${roomImages[`room${room.id}`]}/>
+        </div>
         <div id="room-details">
           <h2>${room.name}</h3>
           <span>🛏 ${room.beds}</span>

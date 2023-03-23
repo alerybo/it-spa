@@ -64,7 +64,7 @@ export const cartManager = {
         const { price, quantity } = value;
 
         return {
-          name, // rownowazne z --> name: name,
+          name,
           price,
           quantity,
         };
@@ -81,12 +81,10 @@ export const cartManager = {
       const content = JSON.parse(cart);
 
       // [{ price: 170, quantity: 1 }, { price: 140, quantity: 3 }, itd.]
-      return Object.values(content)
-        .reduce(
-          (totalPrice, item) => totalPrice + item.price * item.quantity,
-          0
-        )
-        .toFixed(2);
+      return Object.values(content).reduce(
+        (totalPrice, item) => totalPrice + item.price * item.quantity,
+        0
+      );
     }
   },
 };

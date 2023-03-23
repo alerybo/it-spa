@@ -3,10 +3,19 @@ import { NavButton } from "../common/NavButton";
 
 export function Cart() {
   const div = document.createElement("div");
+  div.classList.add("cart");
+
+  const itemsList = cartManager.getAllItems();
+  if (itemsList.length === 0) {
+    div.innerHTML = `
+    <h2>Cart</h2>
+    <h3>Your cart is empty!</h3>
+  `;
+    return div;
+  }
 
   div.innerHTML = `
     <h2>Cart</h2>
-    <p>Przeglądaj zawartość koszyka.</p>
     <table class="table">
       <tr>
         <th>Name</th>
@@ -17,7 +26,7 @@ export function Cart() {
     </table>
   `;
 
-  const tableRows = cartManager.getAllItems().map((item) => {
+  const tableRows = itemsList.map((item) => {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
@@ -39,16 +48,12 @@ export function Cart() {
 
   const tableFooter = document.createElement("tr");
 
-  tableFooter.innerHTML = `
-    <td></td>
-    <td></td>
-    <td>
-      Total = <strong>${cartManager.getTotalPrice()} PLN</strong>
-    </td>
-    <td></td>
-  `;
+  const total = document.createElement("div");
+  total.classList.add("total");
+  total.innerHTML = `Total  <strong>${cartManager.getTotalPrice()} PLN</strong>`;
 
   div.querySelector(".table").append(...tableRows, tableFooter);
+  div.append(total);
 
   return div;
 }

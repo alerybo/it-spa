@@ -1,5 +1,6 @@
 import { NavButton } from "../common/NavButton";
 import { Button } from "../common/Button";
+import { Loader } from "../common/Loader";
 import { RoomDetails } from "./RoomDetails";
 import { cartManager } from "../cart/cartManager";
 import * as roomImages from "../assets";
@@ -7,11 +8,10 @@ import * as roomImages from "../assets";
 export function RoomList() {
   const div = document.createElement("div");
   div.classList.add("rooms");
+  div.innerHTML = `<h2>Rooms</h2>`;
 
-  div.innerHTML = `
-    <h2>Rooms</h2>
-    <p class="loading">Ładowanie pokoi...</p>
-  `;
+  const loader = Loader();
+  div.append(loader);
 
   const ul = document.createElement("ul");
 
@@ -50,7 +50,7 @@ export function RoomList() {
 
       ul.append(...lis);
       div.append(ul);
-      div.querySelector(".loading").remove();
+      div.querySelector(".loader").remove();
     });
 
   return div;

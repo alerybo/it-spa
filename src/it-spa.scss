@@ -1,10 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
 
+// ==================== VARIABLES ====================
 $base-color: #1c2925;
 $dark-color: #131d1a;
 $light-color: #192622;
-
 $box-shadow: 0 0.5rem 1rem rgba(#000, 0.15);
+
+// ==================== MIXIN FOR MEDIA QUERIES ====================
+@mixin screen($breakpoint) {
+  @if $breakpoint == medium {
+    @media only screen and (min-width: 680px) {
+      @content;
+    }
+  }
+  @if $breakpoint == large {
+    @media only screen and (min-width: 1024) {
+      @content;
+    }
+  }
+}
 
 html,
 body {
@@ -38,6 +52,12 @@ nav {
     width: 100%;
     background: $base-color;
     top: -500px;
+    left: 0;
+    box-shadow: $box-shadow;
+
+    &.open {
+      top: 80px;
+    }
   }
 
   button {
@@ -60,10 +80,23 @@ nav {
       border-bottom: 1px solid white;
     }
   }
+  @include screen(medium) {
+    .menu-container {
+      position: initial;
+      width: fit-content;
+      flex-direction: row;
+      box-shadow: none;
+    }
+    .menu-button {
+      display: none;
+    }
+  }
 }
 
 main {
   margin-top: 80px;
+
+  // ==================== REUSABLE CLASSES ====================
   h1,
   h2,
   h3,
@@ -79,11 +112,10 @@ main {
 
   button {
     height: 44px;
-    min-width: 4rem;
     border: none;
     color: white;
-    margin-right: 1rem;
-    padding: 0 2rem;
+    margin: 0.5rem;
+    padding: 0 1.5rem;
     border-radius: 20px;
     box-shadow: $box-shadow;
     transition: all 0.3s ease-in-out;
@@ -119,6 +151,49 @@ main {
     }
   }
 
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      width: 3.25em;
+      transform-origin: center;
+      animation: rotate4 2s linear infinite;
+    }
+
+    circle {
+      fill: none;
+      stroke: white;
+      stroke-width: 2;
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      animation: dash4 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate4 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash4 {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dashoffset: -125px;
+      }
+    }
+  }
+
   // ==================== HOME PAGE ====================
 
   .home {
@@ -143,6 +218,16 @@ main {
       p {
         margin: 3rem 0;
       }
+
+      @include screen(medium) {
+        flex-direction: row;
+
+        img {
+          width: 40%;
+          margin: 2rem;
+          order: 2;
+        }
+      }
     }
 
     &-about {
@@ -158,6 +243,14 @@ main {
       p {
         margin: 3rem 0;
       }
+
+      @include screen(medium) {
+        flex-direction: row;
+
+        img {
+          width: 40%;
+        }
+      }
     }
 
     &-treatments {
@@ -171,6 +264,11 @@ main {
       }
       img {
         width: 20%;
+      }
+      @include screen(medium) {
+        .treatments-flex {
+          display: flex;
+        }
       }
     }
 
@@ -186,6 +284,14 @@ main {
       p {
         margin: 3rem 0;
       }
+      @include screen(medium) {
+        flex-direction: row;
+
+        img {
+          width: 40%;
+          order: 2;
+        }
+      }
     }
   }
 
@@ -195,6 +301,10 @@ main {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+
+    h2 {
+      text-align: center;
+    }
 
     li {
       padding: 0;
@@ -206,6 +316,17 @@ main {
 
       div {
         padding: 2rem;
+      }
+    }
+
+    @include screen(medium) {
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      li {
+        margin: 1rem;
       }
     }
   }
@@ -226,9 +347,61 @@ main {
         font-size: 2rem;
       }
     }
+
+    @include screen(medium) {
+      article {
+        flex-direction: row;
+      }
+    }
   }
 
   // ==================== TREATMENTS PAGE ====================
 
+  .treatments {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    h2 {
+      text-align: center;
+    }
+
+    li {
+      padding: 1rem;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+      div {
+        padding: 2rem;
+      }
+    }
+
+    @include screen(medium) {
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      li {
+        margin: 1rem;
+      }
+    }
+  }
+
   // ==================== TREATMENT DETAILS PAGE ====================
+  .treatment-details {
+    margin: 1rem;
+  }
+
+  // ==================== CART ====================
+  .cart {
+    padding: 1rem;
+
+    .table {
+      color: white;
+    }
+  }
 }

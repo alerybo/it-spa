@@ -18,7 +18,11 @@ export function Nav() {
   const menuContainer = document.createElement("div");
   menuContainer.classList.add("menu-container");
   const navButtons = navItems.map((item) => {
-    return NavButton(item.name, item.component);
+    const button = NavButton(item.name, item.component);
+    button.addEventListener("click", () =>
+      menuContainer.classList.remove("open")
+    );
+    return button;
   });
   menuContainer.append(...navButtons);
 

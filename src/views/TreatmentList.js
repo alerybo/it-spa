@@ -1,8 +1,10 @@
 import { NavButton } from "../common/NavButton";
+import { Button } from "../common/Button";
 import { TreatmentDetails } from "./TreatmentDetails";
 
 export function TreatmentList() {
   const div = document.createElement("div");
+  div.classList.add("treatments");
   div.innerHTML = `
     <h2>Treatments</h2>
     <p class="loading">Loading...</p>
@@ -23,10 +25,19 @@ export function TreatmentList() {
           <footer></footer>
         `;
 
-        const detailsButton = NavButton("Read more", () =>
-          TreatmentDetails(treatment.id)
+        const detailsButton = NavButton(
+          "Read more",
+          () => TreatmentDetails(treatment.id),
+          ["light-btn"]
         );
-        li.lastElementChild.append(detailsButton);
+
+        const addToCartButton = Button(
+          "Add to cart",
+          () => cartManager.addItem(room),
+          ["light-btn"]
+        );
+
+        li.lastElementChild.append(addToCartButton, detailsButton);
         return li;
       });
       ul.append(...list);

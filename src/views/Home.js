@@ -48,7 +48,7 @@ export function Home() {
     <h2>Welcome to IT SPA</h2>
     <p>${DUMMY_TEXT_LONG}</p>
     `;
-  aboutContainer.append(NavButton("Read more", RoomList, ["light-btn"]));
+  //aboutContainer.append(NavButton("Read more", RoomList, ["light-btn"]));
   about.append(aboutImage);
   about.append(aboutContainer);
 
@@ -60,6 +60,7 @@ export function Home() {
   <h2>Treatments Menu</h2>`;
 
   const treatmentsContainer = document.createElement("div");
+  treatmentsContainer.classList.add("treatments-flex");
 
   treatments.forEach((treatment) => {
     const div = document.createElement("div");
